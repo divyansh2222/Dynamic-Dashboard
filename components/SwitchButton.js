@@ -1,26 +1,30 @@
 import React, { useState } from 'react';
-import { Space, Switch } from 'antd';
 import { IoMdSunny, IoMdMoon } from 'react-icons/io';
 
 const App = ({ setTheme }) => {
   const [isDark, setIsDark] = useState(true); // State to manage the theme
 
-  const handleThemeToggle = (checked) => {
-    const newTheme = checked ? 'dark' : 'light';
+  const handleThemeToggle = () => {
+    const newTheme = isDark ? 'light' : 'dark';
     setTheme(newTheme);
-    setIsDark(checked); // Update the state based on the switch position
+    setIsDark(!isDark); // Toggle the theme state
   };
 
   return (
-    <Space direction="vertical" >
-      <Switch
-        className="text-black dark:text-white text-center mt-2"
-        checkedChildren={<IoMdSunny className='mt-1' />}
-        unCheckedChildren={<IoMdMoon />}
-        checked={isDark}
-        onChange={handleThemeToggle} // Antd uses `onChange` for toggling
-      />
-    </Space>
+    <div
+      onClick={handleThemeToggle}
+      className={`w-16 h-8 flex items-center rounded-full cursor-pointer transition-colors duration-300 ${
+        isDark ? 'bg-gray-800' : 'bg-gray-300'
+      }`}
+    >
+      <div
+        className={`w-7 h-7 flex items-center justify-center rounded-full bg-white text-black transition-transform duration-300 transform ${
+          isDark ? 'translate-x-1' : 'translate-x-9'
+        }`}
+      >
+        {isDark ? <IoMdMoon className="text-gray-800" /> : <IoMdSunny className="text-yellow-500" />}
+      </div>
+    </div>
   );
 };
 

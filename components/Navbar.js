@@ -9,7 +9,7 @@ import Link from "next/link";
 
 function NavBar() {
   const { data: session } = useSession();
-  const [dropdownOpen, setDropdownOpen] = useState();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const { theme, setTheme } = useTheme();
 
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);

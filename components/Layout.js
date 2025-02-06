@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
       <div
         className={`transition-all duration-300 ${
           isSidebarOpen ? "w-64" : "w-20"
-        }`}
+        } `}
       >
         <Sidebar toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
       </div>

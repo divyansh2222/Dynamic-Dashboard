@@ -11,7 +11,7 @@ const Sidebar = () => {
   const { session } = useSession();
 
   return (
-    <div className="flex h-screen">
+    <div className="h-screen flex">
       {/* Sidebar */}
       <div
         className={`h-full bg-blue-100 dark:bg-darkbackground border-r-2 dark:text-white transition-all duration-300 
@@ -26,9 +26,7 @@ const Sidebar = () => {
               height={40}
               width={40}
             />
-            <span
-              className={`ml-2 text-xl font-bold transition-all duration-300 ${isExpanded ? "inline-block" : "hidden"}`}
-            >
+            <span className={`ml-2 text-xl font-bold ${isExpanded ? "block" : "hidden"}`}>
               Trisanco
             </span>
           </div>
@@ -49,20 +47,12 @@ const Sidebar = () => {
               className="flex items-center p-3 rounded-lg hover:bg-blue-50 dark:hover:bg-darkbackground transition-all"
             >
               <item.icon className="text-lg" />
-              <span
-                className={`ml-4 transition-all duration-300 ${isExpanded ? "inline-block" : "hidden"}`}
-              >
+              <span className={`ml-4 transition-all ${isExpanded ? "block" : "hidden"}`}>
                 {item.label}
               </span>
             </Link>
           ))}
         </nav>
-      </div>
-
-      {/* Main Content */}
-      <div className="flex-1 p-6">
-        <h1 className="text-2xl font-bold">Main Content Area</h1>
-        <p>Your content goes here and will not be overlapped by the sidebar.</p>
       </div>
     </div>
   );

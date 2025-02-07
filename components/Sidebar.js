@@ -8,45 +8,46 @@ import { useSession } from "next-auth/react";
 
 const Sidebar = () => {
   const [isExpanded, setIsExpanded] = useState(true);
- 
-
   const { session } = useSession();
 
   return (
     <div
-      className={`fixed top-0 left-0 h-screen bg-blue-100 dark:bg-darkbackground border-r-2 dark:text-white ${
-        isExpanded ? "w-64" : "w-20"
-      } transition-all duration-300 z-50`}
+      className={`fixed top-0 left-0 h-screen bg-blue-100 dark:bg-darkbackground border-r-2 dark:text-white 
+        ${isExpanded ? "w-64" : "w-20"} transition-all duration-300 z-50 flex flex-col`}
     >
       {/* Logo and Toggle Button */}
       <div className="flex items-center justify-between p-4 border-b border-gray-700">
-        <div className="text-xl flex items-center font-bold">
+        <div className="flex items-center">
           <Image
             alt="Logo"
             src="/1714654790075-removebg-preview.png"
             height={40}
             width={40}
           />
-          {isExpanded && <span className="ml-2">Trisanco</span>}
+          <span className={`ml-2 text-xl font-bold transition-all duration-300 ${isExpanded ? "inline-block" : "hidden"}`}>
+            Trisanco
+          </span>
         </div>
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="p-2 rounded-full hover:bg-red-300"
+          className="p-2 rounded-full hover:bg-red-300 transition-all"
         >
           {isExpanded ? <FaAngleDoubleLeft /> : <FaAngleDoubleRight />}
         </button>
       </div>
 
       {/* Menu Items */}
-      <nav className="flex flex-col mt-4 mx-2">
+      <nav className="flex flex-col mt-4 mx-2 space-y-2">
         {menuItems.map((item) => (
           <Link
             href={item.href}
             key={item.label}
-            className="flex items-center p-3 gap-4 hover:bg-blue-50 dark:hover:bg-darkbackground rounded-lg"
+            className="flex items-center p-3 rounded-lg hover:bg-blue-50 dark:hover:bg-darkbackground transition-all"
           >
             <item.icon className="text-lg" />
-            {isExpanded && <span>{item.label}</span>}
+            <span className={`ml-4 transition-all duration-300 ${isExpanded ? "inline-block" : "hidden"}`}>
+              {item.label}
+            </span>
           </Link>
         ))}
       </nav>

@@ -16,7 +16,7 @@ function NavBar() {
     setDropdownOpen(!dropdownOpen);
   };
   return (
-    <nav className="flex items-center justify-between dark:text-white dark:bg-darkbackground p-5 border-b no-scroll">
+    <nav className="flex items-center justify-between dark:text-white dark:bg-darkbackground p-5 border-b ">
       {/* Search Bar */}
       {/* Search Bar */}
       <div className="flex-1 mx-6 hidden md:block">

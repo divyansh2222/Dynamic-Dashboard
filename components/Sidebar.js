@@ -8,20 +8,13 @@ import { useSession } from "next-auth/react";
 
 const Sidebar = () => {
   const [isExpanded, setIsExpanded] = useState(true);
-  const [isMobile, setIsMobile] = useState(false); // Mobile check state
   const { session } = useSession();
 
-  // Check screen size on mount & resize
+  // Mobile में sidebar disable करने के लिए
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 1024) {
-        // md and below (Mobile & Tablet)
+      if (window.innerWidth < 768) {
         setIsExpanded(false);
-        setIsMobile(true);
-      } else {
-        // lg and above (Desktop)
-        setIsExpanded(true);
-        setIsMobile(false);
       }
     };
 
@@ -33,7 +26,8 @@ const Sidebar = () => {
   return (
     <div
       className={`h-screen bg-blue-100 dark:bg-darkbackground border-r-2 dark:text-white transition-all duration-300 fixed md:relative z-40
-      ${isExpanded ? "w-64" : "w-20"} md:w-20 lg:w-${isExpanded ? "64" : "20"}`}
+      ${isExpanded ? "w-64" : "w-20"} 
+      ${isExpanded ? "block" : "hidden"} md:block`}
     >
       {/* Logo and Toggle Button */}
       <div className="flex items-center justify-between p-4 border-b border-gray-700">
@@ -43,16 +37,12 @@ const Sidebar = () => {
             Trisanco
           </span>
         </div>
-        
-        {/* Toggle button only on desktop */}
-        {!isMobile && (
-          <button
-            onClick={() => setIsExpanded(!isExpanded)}
-            className="p-2 rounded-full hover:bg-red-300 transition-all"
-          >
-            {isExpanded ? <FaAngleDoubleLeft /> : <FaAngleDoubleRight />}
-          </button>
-        )}
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="p-2 rounded-full hover:bg-red-300 transition-all"
+        >
+          {isExpanded ? <FaAngleDoubleLeft /> : <FaAngleDoubleRight />}
+        </button>
       </div>
 
       {/* Menu Items */}

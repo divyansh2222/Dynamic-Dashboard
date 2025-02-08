@@ -23,7 +23,7 @@ const Sidebar = () => {
 
       {/* Sidebar */}
       <div
-        className={`h-screen bg-blue-100 dark:bg-darkbackground border-r-2 dark:text-white transition-all duration-300 fixed md:relative z-40
+        className={`h-screen bg-blue-100 dark:bg-darkbackground overflow-y-hidden border-r-2 dark:text-white transition-all duration-300 fixed md:relative z-40
         ${isExpanded ? "w-64" : "w-20"}
         ${isMobileOpen ? "block" : "hidden"} md:block`}
       >

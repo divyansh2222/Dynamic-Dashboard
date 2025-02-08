@@ -14,7 +14,7 @@ const page = ({session,signOut}) => {
       <Box/>
     <div className='flex flex-row items-center p-4 rounded-xl border-2 gap-10 sm:flex-col md:flex-row lg:flex-row '> 
      
-    <div className='lg:block hidden'><Barchart/></div>
+    <div className='lg:block xxl:block xl:block md:block hidden'><Barchart/></div>
      <Notification/>
      
 

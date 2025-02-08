@@ -19,11 +19,11 @@ function NavBar() {
     <nav className="flex items-center justify-between dark:text-white dark:bg-darkbackground p-5 border-b ">
       {/* Search Bar */}
       {/* Search Bar */}
-      <div className="flex-1 mx-4 hidden md:block">
+      <div className="flex-1 mx-6 hidden md:block">
         <input
           type="text"
           placeholder="Search..."
-          className="w-2/3 px-4 py-1 border bg-blue-100 rounded-2xl focus:outline-none dark:bg-darkbackground focus:ring-2 focus:ring-blue-500"
+          className="w-1/2 px-4 py-1 border bg-blue-100 rounded-2xl focus:outline-none dark:bg-darkbackground focus:ring-2 focus:ring-blue-500"
         />
       </div>
 

@@ -1,31 +1,22 @@
 "use client";
 import { useState } from "react";
-import { FaHome, FaTable, FaAngleDoubleRight, FaAngleDoubleLeft, FaBars } from "react-icons/fa";
+import { FaHome, FaTable, FaAngleDoubleRight, FaAngleDoubleLeft } from "react-icons/fa";
 import { MdPersonAddAlt1 } from "react-icons/md";
 import Image from "next/image";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 
 const Sidebar = () => {
-  const [isExpanded, setIsExpanded] = useState(true);
-  const [isMobileOpen, setIsMobileOpen] = useState(false); // Mobile sidebar state
+  const [isExpanded, setIsExpanded] = useState(false); // Default collapsed
   const { session } = useSession();
 
   return (
     <>
-      {/* Mobile Toggle Button */}
-      <button
-        onClick={() => setIsMobileOpen(!isMobileOpen)}
-        className="md:hidden fixed top-4 left-4 p-2 bg-blue-500 text-white rounded-lg z-50"
-      >
-        <FaBars size={20} />
-      </button>
-
       {/* Sidebar */}
       <div
         className={`h-screen bg-blue-100 dark:bg-darkbackground border-r-2 dark:text-white transition-all duration-300 fixed md:relative z-40
-        ${isExpanded ? "w-64" : "w-20"}
-        ${isMobileOpen ? "block" : "hidden"} md:block`}
+        ${isExpanded ? "w-64" : "w-20"} 
+        ${isExpanded ? "translate-x-0" : "-translate-x-full"} md:translate-x-0`}
       >
         {/* Logo and Toggle Button */}
         <div className="flex items-center justify-between p-4 border-b border-gray-700">
@@ -64,6 +55,14 @@ const Sidebar = () => {
           ))}
         </nav>
       </div>
+
+      {/* Mobile Overlay (for closing sidebar) */}
+      {isExpanded && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 md:hidden z-30"
+          onClick={() => setIsExpanded(false)}
+        ></div>
+      )}
     </>
   );
 };
@@ -76,4 +75,4 @@ const menuItems = [
   { label: "Current Member", href: "/currentmember", icon: MdPersonAddAlt1 },
 ];
 
-export default Sidebar;
+export default Sidebar

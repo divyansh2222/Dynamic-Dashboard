@@ -28,7 +28,7 @@ function NavBar() {
       </div>
 
       {/* Right Side Icons */}
-      <div className="flex items-center space-x-4">
+      <div className="flex justify-end md:justify-center items-center space-x-4">
         {/* Messages */}
         <button
           className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"

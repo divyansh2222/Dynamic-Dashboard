@@ -15,7 +15,7 @@ const page = ({session,signOut}) => {
     <div className='flex flex-row items-center p-4 rounded-xl border-2 gap-10 sm:flex-col md:flex-row lg:flex-row '> 
      
     
-     <Barchart/>
+     <Barchart className="sm:hidden md:hidden"/>
 
      <Notification/>
      

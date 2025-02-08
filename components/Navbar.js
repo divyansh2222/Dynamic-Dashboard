@@ -23,7 +23,7 @@ const { data: session } = useSession();
            
 
             {/* Search Bar */}
-            <div className="flex-1 mx-4">
+            <div className="flex-1 mx-4 md:block sm:block">
                 <input
                     type="text"
                     placeholder="Search..."
